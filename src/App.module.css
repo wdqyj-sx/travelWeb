@@ -1,3 +1,8 @@
 .App {
-  background-color: rgba(0, 0, 0, 0.08);
+  /*background-color: rgba(0, 0, 0, 0.08);*/
+}
+.page-content {
+  width: 1230px;
+  margin: auto;
+  height: 75vh;
 }
