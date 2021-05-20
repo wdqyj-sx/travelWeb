@@ -10,6 +10,7 @@ interface PropsType {
 }
 
 export const ProductImage: React.FC<PropsType> = ({id, size, title, imageSrc, price}) => {
+   console.log(imageSrc)
     return (
         <>
             {
@@ -18,7 +19,7 @@ export const ProductImage: React.FC<PropsType> = ({id, size, title, imageSrc, pr
             }
             <div>
                 <Typography.Text type="secondary">
-                    {title.substr(0, 25)}
+                    {title.slice(0, 25)}
                 </Typography.Text>
                 <Typography.Text type={"danger"}>
                     ￥{price}起
