@@ -3,6 +3,7 @@ import styles from "./Header.module.css";
 import logo from "../../assets/logo.svg";
 import { Layout, Typography, Input, Menu, Button, Dropdown } from "antd";
 import { GlobalOutlined } from "@ant-design/icons";
+import {Link} from "react-router-dom"
 
 export const Header: React.FC = () => {
   return (
@@ -24,8 +25,9 @@ export const Header: React.FC = () => {
             语言
           </Dropdown.Button>
           <Button.Group className={styles["button-group"]}>
-            <Button>注册</Button>
-            <Button>登陆</Button>
+           <Link to={"/register"}> <Button>注册</Button></Link>
+          <Link to={"/signIn"}><Button>登陆</Button>
+          </Link>
           </Button.Group>
         </div>
       </div>
