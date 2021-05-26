@@ -15,11 +15,41 @@ class HeaderComponnet extends React.Component<RouteComponentProps
     constructor(props) {
         super(props);
         const storeState = store.getState()
+
         this.state = {
             language: storeState.language,
             languageList: storeState.languageList
         }
+        store.subscribe(this.handleStoreChange)
     }
+    handleStoreChange = () => {
+        const storeState = store.getState();
+
+       this.setState({
+           language: storeState.language,
+           languageList: storeState.languageList
+       })
+
+    }
+    menuClickHandle = (e) => {
+       if(e.key === "new") {
+           store.dispatch({
+               type:"new_language",
+               payload:{name:"新语言",key:"new"}
+           })
+       }
+       else {
+           //创建行为
+           const action = {
+               type: "change_language",
+               payload: e.key
+           }
+           //分发行为
+           store.dispatch(action);
+       }
+
+    }
+
 
     render() {
         return (
@@ -31,17 +61,20 @@ class HeaderComponnet extends React.Component<RouteComponentProps
                         <Dropdown.Button
                             style={{marginLeft: 15}}
                             overlay={
-                                <Menu>
+                                <Menu onClick={this.menuClickHandle}>
                                     {
-                                        this.state.languageList.map(l =>{
-                                            return <Menu.Item key = {l.code}>{l.name}</Menu.Item>
+                                        this.state.languageList.map(l => {
+                                            return <Menu.Item key={l.code}>{l.name}</Menu.Item>
                                         })
                                     }
+                                    <Menu.Item key={"new"}> 新语言 </Menu.Item>
                                 </Menu>
                             }
                             icon={<GlobalOutlined/>}
                         >
-                            语言
+                            {
+                                this.state.language
+                            }
                         </Dropdown.Button>
                         <Button.Group className={styles["button-group"]}>
                             <Link to={"/register"}> <Button>注册</Button></Link>
@@ -85,4 +118,4 @@ class HeaderComponnet extends React.Component<RouteComponentProps
 
 };
 
-export  const Header = withRouter(HeaderComponnet)
+export const Header = withRouter(HeaderComponnet)

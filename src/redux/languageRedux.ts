@@ -10,13 +10,30 @@ const defaultState: LanguageRedux = {
             name: "中文",
             code: "zh"
         }, {
-            name: "英文",
+            name: "English",
             code: "en"
         }
     ]
 }
 
 export default (store: LanguageRedux = defaultState, action) => {
-    console.log(store, action);
+    switch (action.type){
+        case "change_language" :
+            const newStore = {...store, language: action.payload}
+            return newStore;
+        case "new_language" :
+            return {
+                language: action.payload.key,
+                languageList:[
+                    ...store.languageList,
+                    action.payload
+                ]
+            }
+    }
+    //检测行为
+    if (action.type === "change_language") {
+
+
+    }
     return store
 }
