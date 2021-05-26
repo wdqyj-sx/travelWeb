@@ -1,3 +1,6 @@
+import i18n from "i18next"
+import {act} from "@testing-library/react";
+
 export interface LanguageRedux {
     language: "en" | "zh",
     languageList: { name: string, code: string }[]
@@ -19,9 +22,11 @@ const defaultState: LanguageRedux = {
 export default (store: LanguageRedux = defaultState, action) => {
     switch (action.type){
         case "change_language" :
+            i18n.changeLanguage(action.payload)
             const newStore = {...store, language: action.payload}
             return newStore;
         case "new_language" :
+
             return {
                 language: action.payload.key,
                 languageList:[
@@ -30,10 +35,6 @@ export default (store: LanguageRedux = defaultState, action) => {
                 ]
             }
     }
-    //检测行为
-    if (action.type === "change_language") {
 
 
-    }
-    return store
 }
