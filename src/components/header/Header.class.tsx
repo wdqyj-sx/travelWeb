@@ -4,8 +4,8 @@ import logo from "../../assets/logo.svg";
 import {Layout, Typography, Input, Menu, Button, Dropdown} from "antd";
 import {GlobalOutlined} from "@ant-design/icons";
 import {Link, withRouter, RouteComponentProps} from "react-router-dom"
-import store from "../../redux/store"
-import {LanguageRedux} from "../../redux/languageRedux"
+import store from "../../redux/language/store"
+import {LanguageRedux} from "../../redux/language/languageRedux"
 import { withTranslation,WithTranslation } from "react-i18next"
 
 interface state extends LanguageRedux {
