@@ -1,5 +1,5 @@
 import i18n from "i18next"
-import {act} from "@testing-library/react";
+import {ADD_LANGUAGE, CHANGE_LANGUAGE, languageActionType} from "./languageAction"
 
 export interface LanguageRedux {
     language: "en" | "zh",
@@ -19,16 +19,16 @@ const defaultState: LanguageRedux = {
     ]
 }
 
-export default (store: LanguageRedux = defaultState, action) => {
+export default (store: LanguageRedux = defaultState, action:languageActionType ) => {
     switch (action.type){
-        case "change_language" :
+        case CHANGE_LANGUAGE :
             i18n.changeLanguage(action.payload)
             const newStore = {...store, language: action.payload}
             return newStore;
-        case "new_language" :
+        case ADD_LANGUAGE :
 
             return {
-                language: action.payload.key,
+                ...store,
                 languageList:[
                     ...store.languageList,
                     action.payload

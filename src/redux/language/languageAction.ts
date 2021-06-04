@@ -23,12 +23,12 @@ export const changeLanguageActionCreator = (
 }
 
 export const addlanguageActionCreator = (
-name:string,
-code:string
-):AddLanguageAction =>{
+    name: string,
+    code: string
+): AddLanguageAction => {
     return {
-        type:ADD_LANGUAGE,
-        payload:{
+        type: ADD_LANGUAGE,
+        payload: {
             name,
             code
         }

@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import "antd/dist/antd.css";
 import "./i18n/config";
+import store from "./redux/store";
+import {Provider} from "react-redux";
 
 ReactDOM.render(
+    <Provider store={store}>
+        <App />
 
-    <App />
+    </Provider>
   ,
   document.getElementById('root')
 );
